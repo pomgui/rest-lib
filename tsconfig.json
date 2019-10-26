@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "lib": [
+      "es2018"
+    ],
+    "downlevelIteration": true,
+    "noEmitHelpers": true,
+    "importHelpers": true
+  }
+}
