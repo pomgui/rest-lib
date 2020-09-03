@@ -9,8 +9,6 @@ exports.typeBitValue = {
     any: 6,
     enum: 7
 };
-// Add inverted map. Ex. typeBitValue[0b0101] == 'date'...
-Object.assign(exports.typeBitValue, Object.keys(exports.typeBitValue).reduce(function (s, type) { return (s[exports.typeBitValue[type]] = type, s); }, {}));
 var FieldData;
 (function (FieldData) {
     FieldData[FieldData["required"] = 8] = "required";
