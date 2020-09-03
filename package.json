@@ -7,7 +7,7 @@
     "test": "tsc && istanbul cover -- jasmine --config=spec/support/jasmine.json"
   },
   "keywords": [],
-  "author": "Wilfredo Pomier <wilfredo@pomgui.com> (http://pomgui.com/wilfredo)",
+  "author": "Wilfredo <wpomier@pomgui.com> (https://github.com/pomgui)",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
