@@ -1,6 +1,6 @@
 {
   "name": "@pomgui/rest-lib",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.0",
   "description": "Common types for piservices projects",
   "main": "dist/lib/index.js",
   "scripts": {
