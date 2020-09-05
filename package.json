@@ -10,7 +10,9 @@
   "keywords": [],
   "author": "Wilfredo <wpomier@pomgui.com> (https://github.com/pomgui)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.0.1"
+  },
   "devDependencies": {
     "@types/jasmine": "^3.4.4",
     "@types/node": "^12.11.2",
@@ -19,7 +21,6 @@
     "jasmine": "^3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
     "ts-node": "^8.4.1",
-    "tslib": "^1.10.0",
     "typescript": "^3.6.4"
   },
   "repository": {
