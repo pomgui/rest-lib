@@ -58,27 +58,30 @@ export class PiTypeDescriptor {
     }
 
     render(): PiDescriptor {
-        let names: string[] = [], data: number[] = [], enums = <any>{},
-            i = 0, d = 0;
+        const names: string[] = [], data: number[] = [], values = <any>{};
+        let i = 0, d = 0;
         this.asArray()
-            .forEach((f, idx) => {
-                names.push(f.name);
-                if (f.values) enums[idx] = f.values;
-                d |= f.toInt() << i;
+            .forEach((field, idx) => {
+                names.push(field.name);
+                if (field.values) values[idx] = field.values;
+                d |= field.toInt() << i;
                 if ((i += FieldData.bitcount) >= FieldData.maxBitsPerInt) {
                     data.push(d);
                     d = 0; i = 0;
                 }
             });
         if (d) data.push(d);
-        return Object.keys(enums).length ? { n: names, d: data, v: enums } : { n: names, d: data };
+        const n = names.join('|');
+        const hasEnums = !!Object.keys(values).length;
+        return hasEnums ? { n, d: data, v: values } : { n, d: data };
     }
 
-    parse({ n: names, d: data, v: enums }: PiDescriptor) {
+    parse({ n, d: data, v: enums }: PiDescriptor) {
         this.clear();
         if (!enums) enums = {};
         let all: PiFieldDescriptor[] = [];
         let i = 0, d = 0;
+        const names = n.split('|');
         for (let n = 0; n < names.length; n++) {
             let value: number = (data[d] >> i) & FieldData.mask;
             let field = new PiFieldDescriptor(names[n], value, enums![n]);

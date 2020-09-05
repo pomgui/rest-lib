@@ -15,9 +15,9 @@ const
         new PiFieldDescriptor(F('int2', 'integer', false))
     ],
     rendered: PiDescriptor = {
-        n:['str', 'int1', 'num', 'bools', 'date1', 'any1', 'nums', 'enum', 'int2'],
-        d:[0b00110_01101_11100_00011_00010_01001, 0b00010_01111_11011],
-        v:{ 7: ['value1', 'value2', 'value3'] }
+        n: ['str', 'int1', 'num', 'bools', 'date1', 'any1', 'nums', 'enum', 'int2'].join('|'),
+        d: [0b00110_01101_11100_00011_00010_01001, 0b00010_01111_11011],
+        v: { 7: ['value1', 'value2', 'value3'] }
     };
 
 describe('PiTypeDescriptor', () => {
@@ -86,7 +86,7 @@ describe('PiTypeDescriptor', () => {
             expect(fd.render()).toEqual(rendered);
         });
 
-        function complete(f:any){
+        function complete(f: any) {
             f._field.isArray = !!f._field.isArray;
             return f;
         }

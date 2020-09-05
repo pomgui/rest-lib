@@ -13,7 +13,7 @@ var fields = [
     new PiFieldDescriptor_1.PiFieldDescriptor(F('enum', 'enum', true, ['value1', 'value2', 'value3'])),
     new PiFieldDescriptor_1.PiFieldDescriptor(F('int2', 'integer', false))
 ], rendered = {
-    n: ['str', 'int1', 'num', 'bools', 'date1', 'any1', 'nums', 'enum', 'int2'],
+    n: ['str', 'int1', 'num', 'bools', 'date1', 'any1', 'nums', 'enum', 'int2'].join('|'),
     d: [215878729, 2555],
     v: { 7: ['value1', 'value2', 'value3'] }
 };

@@ -46,13 +46,14 @@ var PiTypeDescriptor = /** @class */ (function () {
         return this._arrayCache.required || (this._arrayCache.required = this.asArray().filter(function (f) { return f.required; }));
     };
     PiTypeDescriptor.prototype.render = function () {
-        var names = [], data = [], enums = {}, i = 0, d = 0;
+        var names = [], data = [], values = {};
+        var i = 0, d = 0;
         this.asArray()
-            .forEach(function (f, idx) {
-            names.push(f.name);
-            if (f.values)
-                enums[idx] = f.values;
-            d |= f.toInt() << i;
+            .forEach(function (field, idx) {
+            names.push(field.name);
+            if (field.values)
+                values[idx] = field.values;
+            d |= field.toInt() << i;
             if ((i += types_1.FieldData.bitcount) >= types_1.FieldData.maxBitsPerInt) {
                 data.push(d);
                 d = 0;
@@ -61,18 +62,21 @@ var PiTypeDescriptor = /** @class */ (function () {
         });
         if (d)
             data.push(d);
-        return Object.keys(enums).length ? { n: names, d: data, v: enums } : { n: names, d: data };
+        var n = names.join('|');
+        var hasEnums = !!Object.keys(values).length;
+        return hasEnums ? { n: n, d: data, v: values } : { n: n, d: data };
     };
     PiTypeDescriptor.prototype.parse = function (_a) {
-        var names = _a.n, data = _a.d, enums = _a.v;
+        var n = _a.n, data = _a.d, enums = _a.v;
         this.clear();
         if (!enums)
             enums = {};
         var all = [];
         var i = 0, d = 0;
-        for (var n = 0; n < names.length; n++) {
+        var names = n.split('|');
+        for (var n_1 = 0; n_1 < names.length; n_1++) {
             var value = (data[d] >> i) & types_1.FieldData.mask;
-            var field = new PiFieldDescriptor_1.PiFieldDescriptor(names[n], value, enums[n]);
+            var field = new PiFieldDescriptor_1.PiFieldDescriptor(names[n_1], value, enums[n_1]);
             this.set(field);
             all.push(field);
             if ((i += types_1.FieldData.bitcount) >= types_1.FieldData.maxBitsPerInt) {

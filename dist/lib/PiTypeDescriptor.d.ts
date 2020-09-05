@@ -15,6 +15,6 @@ export declare class PiTypeDescriptor {
     asArray(): PiFieldDescriptor[];
     getRequired(): PiFieldDescriptor[];
     render(): PiDescriptor;
-    parse({ n: names, d: data, v: enums }: PiDescriptor): void;
+    parse({ n, d: data, v: enums }: PiDescriptor): void;
     cast(params: PiApiParams): void;
 }

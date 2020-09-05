@@ -26,8 +26,8 @@ export enum FieldData {
 }
 
 export type PiDescriptor = {
-    /** names */
-    n: string[];
+    /** names separated by '|' */
+    n: string;
     /** binary field data */
     d: number[];
     /** enum values */
