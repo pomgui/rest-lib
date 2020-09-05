@@ -12,5 +12,7 @@
     "downlevelIteration": true,
     "noEmitHelpers": true,
     "importHelpers": true
-  }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
