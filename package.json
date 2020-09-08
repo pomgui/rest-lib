@@ -5,6 +5,7 @@
   "main": "dist/lib/index.js",
   "scripts": {
     "prepare": "tsc",
+    "postversion": "git push && git push --tags",
     "test": "tsc && istanbul cover -- jasmine --config=spec/support/jasmine.json"
   },
   "keywords": [],
