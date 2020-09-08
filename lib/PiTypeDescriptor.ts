@@ -10,7 +10,7 @@ export class PiTypeDescriptor {
         required?: PiFieldDescriptor[]
     } = {};
 
-    constructor(desc?: PiDescriptor | PiFieldDescriptor[]) {
+    constructor(public name: string, desc?: PiDescriptor | PiFieldDescriptor[]) {
         if (desc)
             if ('n' in desc)
                 this.parse(<PiDescriptor>desc);
